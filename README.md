@@ -2,7 +2,7 @@
 
 This is built in [Meteor](https://www.meteor.com/), where the Meteor server handles all the API requests.
 
-1. Send an audio file
+## 1. Send an audio file
 
 Usage: `curl -X POST -H "Content-Disposition: attachment; name='yourAudioFile.wav'" --data-binary @yourAudioFile.wav localhost:3000/post`
 
@@ -14,7 +14,7 @@ Possible Responses:
 
     3. ERROR: Unable to save file: `reason for error`
 
-2. Get (download) a stored file
+## 2. Get (download) a stored file
 
 Usage: `curl -X GET localhost:3000/download?name=X --output fileNameToSaveAs.wav`
 
@@ -35,7 +35,7 @@ Possible Responses:
 
     2. ERROR: File does not exist.
 
-3. Get a list of all stored files
+## 3. Get a list of all stored files
 
 Usage: `curl -X GET localhost:3000/list`
 
@@ -57,8 +57,7 @@ Possible Responses:
 
     2. ERROR: Unable to get files: `reason for error`
 
-
-4. Get metadata of stored files
+## 4. Get metadata of stored files
 
 Usage: `curl -X GET localhost:3000/info?name=X`
 
