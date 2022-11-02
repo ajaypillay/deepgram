@@ -14,7 +14,7 @@ Possible Responses:
 
 2. `yourAudioFile.wav` already exists, please rename.
 
-3. ERROR: Unable to save file: <reason for error>
+3. ERROR: Unable to save file: `<reason for error>`
 
 ## 2. Get (download) a stored file
 
@@ -54,7 +54,7 @@ Possible Responses:
 
 1. JSON object of the form:
 
-    {
+    ```{
         files: [
             {
                 filename: "file1.wav",
@@ -68,11 +68,11 @@ Possible Responses:
                 duration: X
             }
         ]
-    }
+    }```
 
 Where files is empty if there are no files stored. Defaults to lexicographical ascending.
 
-2. ERROR: Unable to get files: <reason for error>
+2. ERROR: Unable to get files: `<reason for error>`
 
 ## 4. Get metadata of stored files
 
