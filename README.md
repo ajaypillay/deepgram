@@ -34,8 +34,8 @@ Usage: `curl -X GET localhost:3000/list`
 
 Query Parameters:
 
-    1. `?minduration=X` for some integer X
-    2. `?maxduration=X` for some integer X
+    1. `?minduration=X` for some numerical value X representing duration in seconds
+    2. `?maxduration=X` for some numerical value X representing duration in seconds
     3. `?sort=X` for any X in ["la", "ld", "da", "dd"] where "la" = "lexicographical ascending", "ld" = "lexicographical descending", "da" = "duration ascending", "dd" = "duration descending".
 
 Possible Responses:
@@ -62,14 +62,27 @@ Possible Responses:
 
     1. JSON object of the form:
 
-    `{
-        name: "filename.wav",
-        duration: XXX,
-        bitrate: XXX,
-        etc
-    }`
+    {
+        "riff_head": "RIFF",
+        "chunk_size": 1323036,
+        "wave_identifier": "WAVE",
+        "fmt_identifier": "fmt ",
+        "subchunk_size": 16,
+        "audio_format": 1,
+        "num_channels": 1,
+        "sample_rate": 22050,
+        "byte_rate": 44100,
+        "block_align": 2,
+        "bits_per_sample": 16,
+        "data_identifier": "data",
+        "duration": 30
+    }
 
-    2. ERROR: File does not exist.
+    Includes .wav file metadata from the [canonical WAVE file format](http://soundfile.sapp.org/doc/WaveFormat/) including duration of the audio in seconds.
+
+    2. ERROR: No filename provided.
+
+    3. ERROR: yourFile.wav does not exist.
 
 
 Done by Ajay Pillay, University of Michigan.
