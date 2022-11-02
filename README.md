@@ -6,15 +6,15 @@ This is built in [Meteor](https://www.meteor.com/), where the Meteor server hand
 
 Usage:
 
-    `curl -X POST -H "Content-Disposition: attachment; name='yourAudioFile.wav'" --data-binary @yourAudioFile.wav localhost:3000/post`
+    curl -X POST -H "Content-Disposition: attachment; name='yourAudioFile.wav'" --data-binary @yourAudioFile.wav localhost:3000/post
 
 Possible Responses:
 
-    1. `yourAudioFile.wav` saved.
+1. `yourAudioFile.wav` saved.
 
-    2. `yourAudioFile.wav` already exists, please rename.
+2. `yourAudioFile.wav` already exists, please rename.
 
-    3. ERROR: Unable to save file: `reason for error`
+3. ERROR: Unable to save file: `reason for error`
 
 ## 2. Get (download) a stored file
 
@@ -72,7 +72,7 @@ Possible Responses:
 
 Usage:
     
-    `curl -X GET localhost:3000/info?name=X`
+    curl -X GET localhost:3000/info?name=X
 
 Query Parameters:
 
