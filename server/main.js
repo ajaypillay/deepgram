@@ -15,9 +15,8 @@ WebApp.connectHandlers.use(async (req, res, next) => {
             var buf = Buffer.concat(data).toString('base64')
             fs.writeFileSync(`${process.env.PWD}/files/${filename}`, buf, 'base64')
             res.writeHead(200, {'Content-Type': 'text/html'})
-            res.end('File received')
+            res.end(`${filename} saved.`)
         })
-        // res.end()
     }
     else if (req.url === '/list' && req.method == 'GET') {
         const list = { files: [] }
@@ -43,7 +42,12 @@ WebApp.connectHandlers.use(async (req, res, next) => {
         }
         const file = req.query.name
         fs.readFile(`${process.env.PWD}/files/${file}`, function(err, data) {
-            if (err) throw err
+            if (err) {
+                // console.log(err)
+                res.writeHead(200, { 'Content-Type' : 'text/html' })
+                res.end(file + " not found.")
+                return
+            }
             res.writeHead(200, { 'Content-Type' : 'text/html' })
             res.end(data)
             return
