@@ -88,7 +88,7 @@ Possible Responses:
 
 1. JSON object of the form:
 
-    {
+    `{
         "riff_head": "RIFF",
         "chunk_size": 1323036,
         "wave_identifier": "WAVE",
@@ -102,7 +102,7 @@ Possible Responses:
         "bits_per_sample": 16,
         "data_identifier": "data",
         "duration": 30
-    }
+    }`
 
 Includes .wav file metadata from the [canonical WAVE file format](http://soundfile.sapp.org/doc/WaveFormat/) including duration of the audio in seconds.
 
