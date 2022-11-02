@@ -1,6 +1,6 @@
 # Deepgram Coding Project
 
-This is built in [Meteor](https://www.meteor.com/), where the Meteor server handles all the API requests.
+This is built in [Meteor](https://www.meteor.com/), where the Meteor server handles all the API requests. Currently only supports .wav files.
 
 ## 1. Send an audio file
 
@@ -24,14 +24,7 @@ Query Parameters:
 
 Possible Responses:
 
-    1. JSON object of the form:
-
-    `{
-        name: "filename.wav",
-        duration: XXX,
-        bitrate: XXX,
-        etc
-    }`
+    1. Raw binary of the requested file, which will be saved to fileNameToSaveAs.wav as specified in the `curl` command.
 
     2. ERROR: File does not exist.
 
