@@ -4,7 +4,9 @@ This is built in [Meteor](https://www.meteor.com/), where the Meteor server hand
 
 ## 1. Send an audio file
 
-Usage: `curl -X POST -H "Content-Disposition: attachment; name='yourAudioFile.wav'" --data-binary @yourAudioFile.wav localhost:3000/post`
+Usage:
+
+`curl -X POST -H "Content-Disposition: attachment; name='yourAudioFile.wav'" --data-binary @yourAudioFile.wav localhost:3000/post`
 
 Possible Responses:
 
@@ -42,9 +44,21 @@ Possible Responses:
 
     1. JSON object of the form:
 
-    `{
-        files: ["file1.wav",...,"fileN.wav"]
-    }`
+    {
+        files: [
+            {
+                filename: "file1.wav",
+                duration: X
+            },
+            .
+            .
+            .
+            ,{
+                filename: "fileN.wav",
+                duration: X
+            }
+        ]
+    }
 
     Where files is empty if there are no files stored. Defaults to lexicographical ascending.
 
