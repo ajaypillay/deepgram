@@ -88,21 +88,21 @@ Possible Responses:
 
 1. JSON object of the form:
 
-    `{
-        "riff_head": "RIFF",
-        "chunk_size": 1323036,
-        "wave_identifier": "WAVE",
-        "fmt_identifier": "fmt ",
-        "subchunk_size": 16,
-        "audio_format": 1,
-        "num_channels": 1,
-        "sample_rate": 22050,
-        "byte_rate": 44100,
-        "block_align": 2,
-        "bits_per_sample": 16,
-        "data_identifier": "data",
-        "duration": 30
-    }`
+        {
+            "riff_head": "RIFF",
+            "chunk_size": 1323036,
+            "wave_identifier": "WAVE",
+            "fmt_identifier": "fmt ",
+            "subchunk_size": 16,
+            "audio_format": 1,
+            "num_channels": 1,
+            "sample_rate": 22050,
+            "byte_rate": 44100,
+            "block_align": 2,
+            "bits_per_sample": 16,
+            "data_identifier": "data",
+            "duration": 30
+        }
 
 Includes .wav file metadata from the [canonical WAVE file format](http://soundfile.sapp.org/doc/WaveFormat/) including duration of the audio in seconds.
 
