@@ -18,7 +18,9 @@ Possible Responses:
 
 ## 2. Get (download) a stored file
 
-Usage: `curl -X GET localhost:3000/download?name=X --output fileNameToSaveAs.wav`
+Usage:
+    
+    `curl -X GET localhost:3000/download?name=X --output fileNameToSaveAs.wav`
 
 Query Parameters:
 
@@ -32,7 +34,9 @@ Possible Responses:
 
 ## 3. Get a list of all stored files
 
-Usage: `curl -X GET localhost:3000/list`
+Usage:
+    
+    `curl -X GET localhost:3000/list`
 
 Query Parameters:
 
@@ -66,7 +70,9 @@ Possible Responses:
 
 ## 4. Get metadata of stored files
 
-Usage: `curl -X GET localhost:3000/info?name=X`
+Usage:
+    
+    `curl -X GET localhost:3000/info?name=X`
 
 Query Parameters:
 
