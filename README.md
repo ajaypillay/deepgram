@@ -6,7 +6,7 @@ This is built in [Meteor](https://www.meteor.com/), where the Meteor server hand
 
 Usage:
 
-```curl -X POST -H "Content-Disposition: attachment; name='yourAudioFile.wav'" --data-binary @yourAudioFile.wav localhost:3000/post```
+    `curl -X POST -H "Content-Disposition: attachment; name='yourAudioFile.wav'" --data-binary @yourAudioFile.wav localhost:3000/post`
 
 Possible Responses:
 
