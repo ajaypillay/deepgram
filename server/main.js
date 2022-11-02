@@ -11,7 +11,7 @@ WebApp.connectHandlers.use(async (req, res, next) => {
         const filename = cd_header.substring(cd_header.indexOf("'") + 1, cd_header.lastIndexOf("'"))
 
         if (fs.existsSync(`${process.env.PWD}/files/${filename}`)) {
-            res.writeHead(200, {'Content-Type': 'text/html'})
+            res.writeHead(404, {'Content-Type': 'text/html'})
             res.end(`${filename} already exists, please rename.\n`)
             return
         }
@@ -31,19 +31,25 @@ WebApp.connectHandlers.use(async (req, res, next) => {
         })
     }
     else if (req.url.split("?")[0] === '/download' && req.method == 'GET') {
-        
-        if (Object.keys(req.query).length === 0) {
-            res.statusCode = 200
-            res.end("No file to download!\n")
+
+        if (!('name' in req.query) || req.query.name === "") {
+            res.writeHead(404, {'Content-Type': 'text/html'})
+            res.end("ERROR: No filename provided.\n")
             return
         }
         
         const file = req.query.name
+
+        if (!(fs.existsSync(`${process.env.PWD}/files/${file}`))) {
+            res.writeHead(404, {'Content-Type': 'text/html'})
+            res.end(`${file} does not exist.\n`)
+            return
+        }
         
         fs.readFile(`${process.env.PWD}/files/${file}`, function(err, data) {
             if (err) {
                 // console.log(err)
-                res.writeHead(200, { 'Content-Type' : 'text/html' })
+                res.writeHead(404, { 'Content-Type' : 'text/html' })
                 res.end(file + " not found.")
                 return
             }
@@ -57,7 +63,7 @@ WebApp.connectHandlers.use(async (req, res, next) => {
         var minDuration = 0, maxDuration = Infinity, sort = "la"
 
         if (Object.keys(req.query).length > 0) {
-            console.log(Object.keys(req.query))
+            // console.log(Object.keys(req.query))
             if ("minduration" in req.query) {
                 minDuration = parseFloat(req.query.minduration)
             }
@@ -116,7 +122,7 @@ WebApp.connectHandlers.use(async (req, res, next) => {
                                 return 1
                         }
                     })
-                    res.statusCode = 200
+                    res.writeHead(200, {'Content-Type': 'text/html'})
                     res.end(JSON.stringify(list, null, 2) + "\n")
                     return
                 }
@@ -126,7 +132,7 @@ WebApp.connectHandlers.use(async (req, res, next) => {
     else if (req.url.split("?")[0] === '/info' && req.method == 'GET') {
         
         if (!('name' in req.query) || req.query.name === "") {
-            res.statusCode = 200
+            res.writeHead(404, {'Content-Type': 'text/html'})
             res.end("ERROR: No filename provided.\n")
             return
         }
@@ -134,16 +140,20 @@ WebApp.connectHandlers.use(async (req, res, next) => {
         const filename = req.query.name
         
         if (!(fs.existsSync(`${process.env.PWD}/files/${filename}`))) {
-            res.writeHead(200, {'Content-Type': 'text/html'})
+            res.writeHead(404, {'Content-Type': 'text/html'})
             res.end(`${filename} does not exist.\n`)
             return
         }
         
         wavFileInfo.infoByFilename(`${process.env.PWD}/files/${filename}`, function(err, info) {
-            if (err) throw err
+            if (err) {
+                res.writeHead(404, {'Content-Type': 'text/html'})
+                res.end("ERROR: " + JSON.stringify(err) + "\n")
+                return
+            }
             const metadata = info.header
             metadata.duration = parseFloat(info.duration.toFixed(2))
-            res.statusCode = 200
+            res.writeHead(200, {'Content-Type': 'text/html'})
             res.end(JSON.stringify(metadata, null, 2) + "\n")
             return
         })
