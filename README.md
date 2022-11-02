@@ -42,7 +42,11 @@ Query Parameters:
 
 1. `?minduration=X` for some numerical value X representing duration in seconds
 2. `?maxduration=X` for some numerical value X representing duration in seconds
-3. `?sort=X` for any X in ["la", "ld", "da", "dd"] where "la" = "lexicographical ascending", "ld" = "lexicographical descending", "da" = "duration ascending", "dd" = "duration descending".
+3. `?sort=X` for any X in ["la", "ld", "da", "dd"] where:
+    - "la" = "lexicographical ascending"
+    - "ld" = "lexicographical descending"
+    - "da" = "duration ascending"
+    - "dd" = "duration descending"
 
 Note: To chain parameters in a `curl` command correctly, the URL must be enclosed in "" so that the & is escaped correctly (ie: `localhost:3000/list?sort=ld&minduration=50"`).
 
