@@ -54,21 +54,21 @@ Possible Responses:
 
 1. JSON object of the form:
 
-    {
-        files: [
-            {
-                filename: "file1.wav",
-                duration: X
-            },
-            .
-            .
-            .
-            ,{
-                filename: "fileN.wav",
-                duration: X
-            }
-        ]
-    }
+        {
+            files: [
+                {
+                    filename: "file1.wav",
+                    duration: X
+                },
+                .
+                .
+                .
+                ,{
+                    filename: "fileN.wav",
+                    duration: X
+                }
+            ]
+        }
 
 Where files is empty if there are no files stored. Defaults to lexicographical ascending.
 
